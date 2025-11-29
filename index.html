@@ -1,243 +1,74 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金返せ！！！</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ff0000, #ff6b6b, #ffff00);
+            background-size: 400% 400%;
+            animation: gradient 3s ease infinite;
+            font-family: 'Arial Black', sans-serif;
+            overflow: hidden;
+        }
 
-  <link rel="icon" href="https://symbl-cdn.com/i/webp/0c/f0c7fd9dcb878d4ac26424608addd1.webp" type="image/webp">
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>あうあうあー</title>
-  <style>
-    :root {
-      --primary: #6366f1;
-      --secondary: #8b5cf6;
-      --accent: #06b6d4;
-      --dark: #1e293b;
-      --light: #f8fafc;
-      --glass: rgba(255, 255, 255, 0.1);
-    }
+        .kane {
+            font-size: 15vw;
+            color: #000;
+            text-shadow: 
+                5px 5px 0 #fff,
+                -5px -5px 0 #fff,
+                5px -5px 0 #fff,
+                -5px 5px 0 #fff,
+                10px 10px 0 #ffff00;
+            animation: shake 0.5s infinite;
+            transform: rotate(-10deg);
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        @keyframes shake {
+            0% { transform: translate(0, 0) rotate(-10deg); }
+            25% { transform: translate(10px, -10px) rotate(-15deg); }
+            50% { transform: translate(-10px, 10px) rotate(-5deg); }
+            75% { transform: translate(15px, 5px) rotate(-20deg); }
+            100% { transform: translate(0, 0) rotate(-10deg); }
+        }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      color: var(--light);
-    }
+        .sub {
+            font-size: 8vw;
+            color: #fff;
+            text-shadow: 3px 3px 0 #000;
+            margin-top: 50px;
+            animation: flash 1s infinite;
+        }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-
-    .glass-card {
-      background: var(--glass);
-      backdrop-filter: blur(20px);
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 2rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    }
-
-    .hero {
-      text-align: center;
-      padding: 4rem 0;
-    }
-
-    .profile-image {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid rgba(255, 255, 255, 0.3);
-      margin-bottom: 1.5rem;
-    }
-
-    .name {
-      font-size: 3rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, var(--light), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 0.5rem;
-    }
-
-    .title {
-      font-size: 1.2rem;
-      opacity: 0.9;
-      margin-bottom: 1rem;
-    }
-
-    /* スキルバー */
-    .skill-item {
-      margin-bottom: 1.2rem;
-    }
-
-    .skill-name {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.4rem;
-      font-size: 0.95rem;
-    }
-
-    .skill-bar {
-      height: 6px;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .skill-level {
-      height: 100%;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      border-radius: 10px;
-      transition: width 1s ease-in-out;
-      width: 0;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    /* ボタン共通スタイル */
-    .btn {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-      padding: 0.8rem 2rem;
-      border: none;
-      border-radius: 50px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .animate {
-      animation: fadeInUp 0.8s ease-out;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      margin-top: 2rem;
-    }
-
-    .social-icon {
-      width: 28px;
-      height: 28px;
-      background: var(--glass);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-    }
-
-    .social-icon:hover {
-      transform: scale(1.1);
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    /* My Projects ボタン配置 */
-    .project-buttons {
-      display: flex;
-      justify-content: flex-start;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 1rem;
-    }
-
-  </style>
+        @keyframes flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-
-    <!-- Hero -->
-    <section class="hero glass-card animate">
-      <img src="https://symbl-cdn.com/i/webp/0c/f0c7fd9dcb878d4ac26424608addd1.webp" alt="Profile" class="profile-image">
-      <h1 class="name">kuroi</h1>
-      <p class="title">dev</p>
-      <p>imfatmen</p>
-    </section>
-
-    <!-- Skills -->
-    <div class="grid">
-      <section class="glass-card animate">
-        <h2>Skills</h2>
-
-        <div class="skill-item">
-          <div class="skill-name"><span>Java</span><span>8%</span></div>
-          <div class="skill-bar"><div class="skill-level" data-width="8%"></div></div>
-        </div>
-
-        <div class="skill-item">
-          <div class="skill-name"><span>Python</span><span>12%</span></div>
-          <div class="skill-bar"><div class="skill-level" data-width="12%"></div></div>
-        </div>
-
-        <div class="skill-item">
-          <div class="skill-name"><span>HTML/CSS</span><span>3%</span></div>
-          <div class="skill-bar"><div class="skill-level" data-width="3%"></div></div>
-        </div>
-      </section>
-
-      <!-- My Projects -->
-      <section class="glass-card animate">
-        <h2>link</h2>
-        <div class="project-buttons">
-          <a href="https://github.com/kuroi14123" class="btn">Github</a>
-          <a href="https://open.spotify.com/user/31x66ky2xrbeey5tk4lqdgzy7ily?si=c434fc1dacfe44fd" class="btn">Spotify</a>
-         
-        </div>
-      </section>
+    <div style="text-align: center;">
+        <div class="kane">金返せ！！！</div>
+        <div class="sub">マジで返せよ！！今すぐ！！</div>
     </div>
 
-
-
-
-
-
-  
-  </div>
-
-  <script>
-    // スキルバーアニメーション
-    window.addEventListener('load', () => {
-      document.querySelectorAll('.skill-level').forEach(bar => {
-        const targetWidth = bar.getAttribute('data-width');
-        setTimeout(() => {
-          bar.style.width = targetWidth;
-        }, 400);
-      });
-    });
-  </script>
+    <audio autoplay loop>
+        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" type="audio/mpeg">
+        <!-- うるさい効果音欲しい人はここに差し替えてね -->
+    </audio>
 </body>
 </html>
+
